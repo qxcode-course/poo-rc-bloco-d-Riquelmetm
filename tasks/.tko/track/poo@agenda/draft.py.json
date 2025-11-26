@@ -1,0 +1,9 @@
+{
+    "patches": [
+        {
+            "label": "2025-11-26_21-13-50",
+            "content": "class Fone:\n    def __init__(self, nome:str, numero:str):\n        self.nome = nome\n        self.numero = numero\n\n    def __str__(self) -> str:\n        return f\"{self.nome}:{self.numero}\"\n\nclass Contato:\n    def __init__(self):\n         ",
+            "lines": "11"
+        }
+    ]
+}
