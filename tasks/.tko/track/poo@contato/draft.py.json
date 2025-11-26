@@ -1,0 +1,9 @@
+{
+    "patches": [
+        {
+            "label": "2025-11-26_16-48-04",
+            "content": "class Fone:\n    def __init__(self, nome: str, numero: int):\n        self.nome = nome\n        self.fone = numero\n\n    def __str__(self) -> str:\n        return f\"{self.nome}:{self.fone}\"\n\nclass Contato:\n    def __init__(self,contato:str):\n        self.nome_contato = contato\n        self.fones: dict[str, Fone] = {}\n        self.favorito =  False\n\n    def addcontato(self):\n        ",
+            "lines": "16"
+        }
+    ]
+}
