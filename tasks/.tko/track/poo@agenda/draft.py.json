@@ -2,8 +2,18 @@
     "patches": [
         {
             "label": "2025-11-26_21-13-50",
-            "content": "class Fone:\n    def __init__(self, nome:str, numero:str):\n        self.nome = nome\n        self.numero = numero\n\n    def __str__(self) -> str:\n        return f\"{self.nome}:{self.numero}\"\n\nclass Contato:\n    def __init__(self):\n         ",
+            "content": "@@ -184,15 +184,8 @@\n o%7D%22%0A\n-     %0A%0A\n %0Acla\n@@ -221,865 +221,16 @@\n self\n-, nome:str):%0A        self.nome = nome%0A        self.fones: list%5BFone%5D = %5B%5D%0A        self.favorito = False%0A    %0A    def adicionar (self,nome:str, numero:str):%0A        fone = Fone(nome, numero)%0A        self.fones.append(fone)%0A        return%0A%0A    def remover (self, indice:int):%0A        self.fones.pop(indice)%0A        return%0A    %0A    def reverter (self):%0A        if self.favorito is False:%0A            self.favorito = True%0A            return%0A        elif self.favorito is True:%0A            self.favorito = False%0A            return%0A    %0A    def __str__(self) -%3E str:%0A        if self.favorito is True:%0A            arroba = %22@%22%0A        else:%0A            arroba = %22-%22%0A            fones_str = %22, %22.join(%5Bstr(f) for f in self.fones%5D)%0A            return f%22%7Barroba%7D, %7Bself.nome%7D %5B%7Bfones_str%7D%5D%22%0A%0Aclass Agenda:%0A    def __init__(self):%0A        self.contatos: list%5BContato%5D = %5B%5D\n+):%0A         \n",
             "lines": "11"
+        },
+        {
+            "label": "2025-11-28_02-08-05",
+            "content": "@@ -220,26 +220,61 @@\n _init__(self\n-):\n+, nome:str):%0A        self.nome = nome\n %0A        sel\n@@ -977,16 +977,29 @@\n arroba%7D,\n+ %7Bself.nome%7D \n %5B%7Bfones_\n@@ -1041,26 +1041,16 @@\n t__(self\n-, name:str\n ):%0A     \n@@ -1071,17 +1071,8 @@\n os: \n-dict%5Bstr,\n list\n@@ -1084,191 +1084,9 @@\n ato%5D\n-%5D = %7B%7D%0A        self.name = name%0A    %0A    def adicionar(self, name:str, ):%0A        if self.contatos.values() == name:%0A            self.contatos%5Bname%5D = %0A%0A%0A        self.contatos%5Bname%5D\n  = %5B%5D\n-%0A\n",
+            "lines": "44"
+        },
+        {
+            "label": "2025-11-28_05-19-28",
+            "content": "class Fone:\n    def __init__(self, nome:str, numero:str):\n        self.nome = nome\n        self.numero = numero\n\n    def __str__(self) -> str:\n        return f\"{self.nome}:{self.numero}\"\n     \n\n\nclass Contato:\n    def __init__(self):\n        self.fones: list[Fone] = []\n        self.favorito = False\n    \n    def adicionar (self,nome:str, numero:str):\n        fone = Fone(nome, numero)\n        self.fones.append(fone)\n        return\n\n    def remover (self, indice:int):\n        self.fones.pop(indice)\n        return\n    \n    def reverter (self):\n        if self.favorito is False:\n            self.favorito = True\n            return\n        elif self.favorito is True:\n            self.favorito = False\n            return\n    \n    def __str__(self) -> str:\n        if self.favorito is True:\n            arroba = \"@\"\n        else:\n            arroba = \"-\"\n            fones_str = \", \".join([str(f) for f in self.fones])\n            return f\"{arroba},[{fones_str}]\"\n\nclass Agenda:\n    def __init__(self, name:str):\n        self.contatos: dict[str,list[Contato]] = {}\n        self.name = name\n    \n    def adicionar(self, name:str, ):\n        if self.contatos.values() == name:\n            self.contatos[name] = \n\n\n        self.contatos[name] = []\n",
+            "lines": "51"
         }
     ]
 }

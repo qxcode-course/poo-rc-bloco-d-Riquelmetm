@@ -9,8 +9,7 @@ class Fone:
 
 
 class Contato:
-    def __init__(self, nome:str):
-        self.nome = nome
+    def __init__(self):
         self.fones: list[Fone] = []
         self.favorito = False
     
@@ -23,7 +22,7 @@ class Contato:
         self.fones.pop(indice)
         return
     
-    def reverter (self):
+    def favoritar (self):
         if self.favorito is False:
             self.favorito = True
             return
@@ -32,4 +31,20 @@ class Contato:
             return
     
     def __str__(self) -> str:
-        return f""
+        if self.favorito is True:
+            arroba = "@"
+        else:
+            arroba = "-"
+            fones_str = ", ".join([str(f) for f in self.fones])
+            return f"{arroba},[{fones_str}]"
+
+class Agenda:
+    def __init__(self, name:str):
+        self.contatos: dict[str,list[Contato]] = {}
+        self.name = name
+    
+    def adicionar(self, name:str, ):
+        if name in self.contatos:
+            
+
+
