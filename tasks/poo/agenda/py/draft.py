@@ -54,7 +54,7 @@ class Contato:
         else:
             arroba = "-"
             fones_str = ", ".join([str(f) for f in self.fones])
-            return f"{arroba},{self.nome},[{fones_str}]"
+            return f"{arroba} {self.nome} [{fones_str}]"
 
 class Agenda:
     def __init__(self):
@@ -81,7 +81,56 @@ class Agenda:
             for fone in fones:
                 novo_contato.adicionar(fone.id, fone.numero)
             
-        
+            self.contatos.append(novo_contato)
+
+    def removercontat(self, nome:str):
+        pos = self.findposbyname(nome)
+        if pos != -1:
+            self.contatos.pop(pos)
+
+    def getcontato(self, nome:str):
+        pos = self.findposbyname(nome)
+        if pos != -1:
+            return self.contatos[pos]
+        else:
+            return None
+
+    def search(self, palavra:str):
+        resultado = []
+        for contato in self.contatos:
+            if palavra in contato.nome:
+                resultado.append(contato)
+    
+
+    
+def main():
+    agenda = Agenda()
+
+    while True:
+        line = input()
+        print("$" + line)
+        args = line.split(" ")
+
+        if args[0] == "end":
+            break
             
+        elif args[0] == "add":
+            nome = args[1]
+            fones_add = []
+            for token in args[2:]:
+                partes = token.split(":")
+                if len(partes) == 2:
+                    fones_add.append(Fone(partes[0], partes[1]))
+            
+            agenda.adicionar(nome, fones_add)
+    
+
+        elif args[0] == "show":
+            print(agenda)
+
+        elif args[0] == "rm":
+            agenda.removercontat(args[1])
+
+
 
 
