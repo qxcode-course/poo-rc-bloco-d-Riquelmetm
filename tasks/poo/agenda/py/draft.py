@@ -1,22 +1,34 @@
 class Fone:
-    def __init__(self, nome:str, numero:str):
-        self.nome = nome
+    def __init__(self, id:str, numero:str):
+        self.id = id
         self.numero = numero
 
+    def isValid(self) -> bool:
+        validos = "0123456789()-"
+        for c in self.numero:
+            if c not in validos:
+                return False
+        return True
+
     def __str__(self) -> str:
-        return f"{self.nome}:{self.numero}"
+        return f"{self.id}:{self.numero}"
      
 
 
 class Contato:
-    def __init__(self):
+    def __init__(self, nome:str):
         self.fones: list[Fone] = []
         self.favorito = False
+        self.nome = nome
     
     def adicionar (self,nome:str, numero:str):
-        fone = Fone(nome, numero)
-        self.fones.append(fone)
-        return
+        if fone.isValid():
+            fone = Fone(nome, numero)
+            self.fones.append(fone)
+            return
+        else:
+            return f"Fone Invalido"
+
 
     def remover (self, indice:int):
         self.fones.pop(indice)
@@ -29,6 +41,12 @@ class Contato:
         elif self.favorito is True:
             self.favorito = False
             return
+        
+    def getfavorito(self):
+        if self.favorito is True:
+            return True
+        else:
+            return False
     
     def __str__(self) -> str:
         if self.favorito is True:
@@ -36,15 +54,34 @@ class Contato:
         else:
             arroba = "-"
             fones_str = ", ".join([str(f) for f in self.fones])
-            return f"{arroba},[{fones_str}]"
+            return f"{arroba},{self.nome},[{fones_str}]"
 
 class Agenda:
-    def __init__(self, name:str):
-        self.contatos: dict[str,list[Contato]] = {}
-        self.name = name
+    def __init__(self):
+        self.contatos: list[Contato] = []
     
-    def adicionar(self, name:str, ):
-        if name in self.contatos:
+    def findposbyname(self, nome:str) -> int:
+        for i, contato in enumerate(self.contatos):
+            if contato.nome == nome:
+                return i
+            else:
+                return -1
+    
+    def adicionar(self, nome:str, fones: list[Fone]):
+        pos = self.findposbyname(nome)
+
+        if posicao != -1:
+            contato_existe = self.contatos[pos]
+            for fone in fones:
+                contato_existe.adicionar(fone.id, fone.numero)
+
+
+        else:
+            novo_contato = Contato(nome)
+            for fone in fones:
+                novo_contato.adicionar(fone.id, fone.numero)
+            
+        
             
 
 
