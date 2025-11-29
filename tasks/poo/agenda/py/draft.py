@@ -22,8 +22,8 @@ class Contato:
         self.nome = nome
     
     def adicionar (self,nome:str, numero:str):
+        fone = Fone(nome, numero)
         if fone.isValid():
-            fone = Fone(nome, numero)
             self.fones.append(fone)
             return
         else:
@@ -53,8 +53,8 @@ class Contato:
             arroba = "@"
         else:
             arroba = "-"
-            fones_str = ", ".join([str(f) for f in self.fones])
-            return f"{arroba} {self.nome} [{fones_str}]"
+        fones_str = ", ".join([str(f) for f in self.fones])
+        return f"{arroba} {self.nome} [{fones_str}]"
 
 class Agenda:
     def __init__(self):
@@ -64,8 +64,7 @@ class Agenda:
         for i, contato in enumerate(self.contatos):
             if contato.nome == nome:
                 return i
-            else:
-                return -1
+        return -1
     
     def adicionar(self, nome:str, fones: list[Fone]):
         pos = self.findposbyname(nome)
@@ -101,6 +100,9 @@ class Agenda:
             if palavra in contato.nome:
                 resultado.append(contato)
     
+    def __str__(self):
+        return "\n".join([str(c) for c in self.contatos])
+    
 
     
 def main():
@@ -130,6 +132,28 @@ def main():
 
         elif args[0] == "rm":
             agenda.removercontat(args[1])
+        
+        elif args[0] == "rmFone":
+            contato = agenda.getcontato(args[1])
+
+            if contato:
+                contato.remover(int(args[2]))
+
+        elif args[0] == "tfav":
+            contato = agenda.getcontato(args[1])
+            if contato:
+                contato.favoritar()
+
+        elif cmd == "favs":
+                favoritos = agenda.getFavoritos()
+                for fav in favoritos:
+                    print(fav)
+
+        elif cmd == "search":
+            pattern = args[1]
+            res = agenda.search(pattern)
+            for c in res:
+                print(c)
 
 
 
