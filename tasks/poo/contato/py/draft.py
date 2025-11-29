@@ -5,7 +5,7 @@ class Fone:
         self.number = numero
     
     def isValid(self) -> bool:
-        validos = "0123456789()-"
+        validos = "0123456789()-."
         for c in self.number:
             if c not in validos:
                 return False
@@ -15,8 +15,8 @@ class Fone:
         return f"{self.id}:{self.number}"
 
 class Contato:
-    def __init__(self,contato:str):
-        self.nome = contato
+    def __init__(self, nome:str):
+        self.nome = nome
         self.fones: list[Fone] = []
         self.favorito =  False
     
@@ -25,6 +25,8 @@ class Contato:
         if fone.isValid():
             self.fones.append(fone)
             return
+        else:
+            print("fail: invalid number")
     
     def remover(self, indice:int):
         self.fones.pop(indice)
@@ -40,7 +42,7 @@ class Contato:
         fones_str = ", ".join([str(f) for f in self.fones])
         return f"{arroba} {self.nome} [{fones_str}]"
 
-contato = Contato()
+contato = Contato("")
 def main():
     while True:
         line = input()
@@ -53,6 +55,16 @@ def main():
         
         elif  args[0] == "show":
             print(contato)
+        
+        elif args[0] == "init":
+            contato = Contato(args[1])
 
         elif args[0] == "add":
             contato.adicionar(args[1], args[2])
+        
+        elif args[0] == "rm":
+            contato.remover(int(args[1]))
+        
+        elif args[0] == "tfav":
+            contato.favoritar()
+main()

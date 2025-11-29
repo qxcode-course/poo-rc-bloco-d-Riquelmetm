@@ -12,13 +12,14 @@ sources:
   type: clone
   branch: master
   cache_path: ''
-  cache_timestamp: '2025-11-29 03:45:45'
+  cache_timestamp: '2025-11-29 04:47:26'
   filters:
   - crud
 expanded:
 - poo@campanha-principal
 - poo@bloco_d-crud-com-mapas-e-enumerações
 tasks:
+  poo@contato: '{rate:100, human:Amigo, alone:10, study:120}'
   poo@agenda: '{rate:100, iagen:ajuda_para_erros_de_sintaxe, alone:5, study:1560}'
 flags:
   quests: 0
