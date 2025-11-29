@@ -26,8 +26,6 @@ class Contato:
         if fone.isValid():
             self.fones.append(fone)
             return
-        else:
-            return f"Fone Invalido"
 
 
     def remover (self, indice:int):
@@ -101,11 +99,12 @@ class Agenda:
             if palavra in contato.nome:
                 resultado.append(contato)
                 continue
+
             for fone in contato.fones:
                     if palavra in fone.id or palavra in fone.numero:
                         resultado.append(contato)
                         break
-        return
+        return resultado
 
     def getFavoritos(self):
         favs = []

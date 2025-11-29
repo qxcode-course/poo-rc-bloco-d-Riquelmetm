@@ -47,3 +47,21 @@
 2025-11-29 03:50:25, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:173
 2025-11-29 04:03:59, EXEC, v:1, k:poo@agenda, mode:FULL, rate:62, size:174
 2025-11-29 04:11:19, MOVE, v:1, k:poo@agenda, mode:BACK
+2025-11-29 04:14:59, MOVE, v:1, k:poo@agenda, mode:PICK
+2025-11-29 04:14:59, EXEC, v:1, k:poo@agenda, mode:FULL, rate:62
+2025-11-29 04:17:35, EXEC, v:1, k:poo@agenda, mode:FULL, rate:100, size:175
+2025-11-29 04:17:44, MOVE, v:1, k:poo@agenda, mode:BACK
+2025-11-29 04:18:53, SELF, v:1, k:poo@agenda, rate:100, iagen:ajuda_para_erros_de_sintaxe, alone:5, study:1560
+2025-11-29 04:31:18, MOVE, v:1, k:poo@agenda, mode:PICK
+2025-11-29 04:31:18, EXEC, v:1, k:poo@agenda, mode:FULL, rate:100, size:173
+2025-11-29 04:31:20, MOVE, v:1, k:poo@agenda, mode:BACK
+2025-11-29 04:36:26, MOVE, v:1, k:poo@contato, mode:PICK
+2025-11-29 04:36:27, EXEC, v:1, k:poo@contato, mode:FULL, rate:0, size:43
+2025-11-29 04:36:27, MOVE, v:1, k:poo@contato, mode:BACK
+2025-11-29 04:39:28, MOVE, v:1, k:poo@contato, mode:PICK
+2025-11-29 04:39:28, EXEC, v:1, k:poo@contato, mode:FULL, rate:0, size:57
+2025-11-29 04:43:01, EXEC, v:1, k:poo@contato, mode:FULL, rate:0, size:57
+2025-11-29 04:44:07, EXEC, v:1, k:poo@contato, mode:FULL, rate:0, size:58
+2025-11-29 04:44:09, EXEC, v:1, k:poo@contato, mode:FULL, rate:0
+2025-11-29 04:44:10, EXEC, v:1, k:poo@contato, mode:FULL, rate:0
+2025-11-29 04:46:19, MOVE, v:1, k:poo@contato, mode:BACK
