@@ -69,7 +69,7 @@ class Agenda:
     def adicionar(self, nome:str, fones: list[Fone]):
         pos = self.findposbyname(nome)
 
-        if posicao != -1:
+        if pos != -1:
             contato_existe = self.contatos[pos]
             for fone in fones:
                 contato_existe.adicionar(fone.id, fone.numero)
@@ -81,6 +81,7 @@ class Agenda:
                 novo_contato.adicionar(fone.id, fone.numero)
             
             self.contatos.append(novo_contato)
+            self.contatos.sort(key=lambda contato: contato.nome)
 
     def removercontat(self, nome:str):
         pos = self.findposbyname(nome)
@@ -99,6 +100,19 @@ class Agenda:
         for contato in self.contatos:
             if palavra in contato.nome:
                 resultado.append(contato)
+                continue
+            for fone in contato.fones:
+                    if palavra in fone.id or palavra in fone.numero:
+                        resultado.append(contato)
+                        break
+        return
+
+    def getFavoritos(self):
+        favs = []
+        for c in self.contatos:
+            if c.favorito:
+                favs.append(c)
+        return favs
     
     def __str__(self):
         return "\n".join([str(c) for c in self.contatos])
@@ -144,17 +158,17 @@ def main():
             if contato:
                 contato.favoritar()
 
-        elif cmd == "favs":
+        elif args[0] == "favs":
                 favoritos = agenda.getFavoritos()
                 for fav in favoritos:
                     print(fav)
 
-        elif cmd == "search":
+        elif args[0] == "search":
             pattern = args[1]
             res = agenda.search(pattern)
             for c in res:
                 print(c)
 
-
+main()
 
 
